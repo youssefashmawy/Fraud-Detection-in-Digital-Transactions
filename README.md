@@ -1,0 +1,1 @@
+This project aims to develop a smart fraud detection system that analyzes transactions and account connections to identify potential fraud patterns in real-time.
