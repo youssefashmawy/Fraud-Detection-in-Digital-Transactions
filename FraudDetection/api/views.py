@@ -1,9 +1,10 @@
 from django.http import JsonResponse
+from django.shortcuts import render
+from rest_framework import generics
 from django.views.decorators.csrf import csrf_exempt
 import json
-from database.database import connect_db
+from .database.database import connect_db
 
-# Create your views here.
 @csrf_exempt
 def checkTransaction(request):
     if request.method == 'POST':
@@ -20,6 +21,15 @@ def checkTransaction(request):
             
             # Return a success response with the new record's ID
             return JsonResponse({'id': new_ref.key, 'status': 'success'}, status=201)
+        except json.JSONDecodeError:
+            return JsonResponse({'error': 'Invalid JSON'}, status=400)
+    return JsonResponse({'error': 'Invalid method'}, status=405)
+
+
+def isFraud(request):
+    if request.method == 'GET':
+        try:
+            return JsonResponse({'test': 'success'}, status=201)
         except json.JSONDecodeError:
             return JsonResponse({'error': 'Invalid JSON'}, status=400)
     return JsonResponse({'error': 'Invalid method'}, status=405)

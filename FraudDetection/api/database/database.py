@@ -3,7 +3,7 @@ from firebase_admin import credentials, db
 
 def connect_db():
     # Load credentials and initialize the Firebase app
-    cred = credentials.Certificate("database/credentials.json")
+    cred = credentials.Certificate("../database/credentials.json")
     firebase_admin.initialize_app(cred, {
         'databaseURL': 'https://frauddetection-147b7-default-rtdb.europe-west1.firebasedatabase.app/'
     })

@@ -16,9 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from api.views import checkTransaction
+from django.urls import include, path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('check-transaction/', checkTransaction, name='check_transaction'),
+    path('api/', include('api.urls')),
 ]
