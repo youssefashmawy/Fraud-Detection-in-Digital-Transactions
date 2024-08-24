@@ -1,9 +1,13 @@
 import firebase_admin
 from firebase_admin import credentials, db
+import os
+from django.conf import settings
+
 
 def connect_db():
     # Load credentials and initialize the Firebase app
-    cred = credentials.Certificate("../database/credentials.json")
+    file_path = os.path.join(settings.BASE_DIR, 'api', 'database', 'credentials.json')
+    cred = credentials.Certificate(file_path)
     firebase_admin.initialize_app(cred, {
         'databaseURL': 'https://frauddetection-147b7-default-rtdb.europe-west1.firebasedatabase.app/'
     })

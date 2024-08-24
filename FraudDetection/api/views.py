@@ -28,8 +28,22 @@ def checkTransaction(request):
 
 def isFraud(request):
     if request.method == 'GET':
+        # transaction_id = request.GET.get('transaction_id')
+        #
+        # if not transaction_id:
+        #     return JsonResponse({'error': 'Transaction ID not provided'}, status=400)
+        #
         try:
-            return JsonResponse({'test': 'success'}, status=201)
-        except json.JSONDecodeError:
-            return JsonResponse({'error': 'Invalid JSON'}, status=400)
-    return JsonResponse({'error': 'Invalid method'}, status=405)
+        #     ref = connect_db()
+        #     transaction_ref = ref.reference(f'transactions/{transaction_id}')
+        #     transaction = transaction_ref.get()
+        #
+        #     if transaction.exists:
+        #         return JsonResponse({'id': {transaction_id}, 'exists': 'yes'}, status=200)
+        #     else:
+        #         return JsonResponse({'id': {transaction_id}, 'exists': 'no'}, status=200)
+            return JsonResponse({'id': '123', 'exists': 'no'}, status=200)
+        except Exception as e:
+            return JsonResponse({'error': str(e)}, status=500)
+    else:
+        return JsonResponse({'error': 'Invalid method'}, status=405)

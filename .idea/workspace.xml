@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d025f76-f8d9-42d0-80a1-9f630aeece65" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/FraudDetection/api/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Fraud-Detection-in-Digital-Transactions.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Fraud-Detection-in-Digital-Transactions.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FraudDetection/FraudDetection/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/FraudDetection/FraudDetection/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FraudDetection/FraudDetection/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/FraudDetection/FraudDetection/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FraudDetection/api/database/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/FraudDetection/api/database/database.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FraudDetection/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/FraudDetection/api/views.py" afterDir="false" />
     </list>
@@ -68,6 +64,7 @@
       <workItem from="1724336875661" duration="536000" />
       <workItem from="1724349390179" duration="1671000" />
       <workItem from="1724523454829" duration="7145000" />
+      <workItem from="1724533086504" duration="2210000" />
     </task>
     <servers />
   </component>
