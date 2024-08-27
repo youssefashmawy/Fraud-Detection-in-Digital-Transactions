@@ -4,6 +4,10 @@ from rest_framework import generics
 from django.views.decorators.csrf import csrf_exempt
 import json
 from .database.database import connect_db
+import tensorflow as tf
+
+# Load the model
+model = tf.keras.models.load_model('../Notebooks/PCA_dataset/neural_network_model_pca_80.keras')
 
 @csrf_exempt
 def checkTransaction(request):
@@ -47,3 +51,4 @@ def isFraud(request):
             return JsonResponse({'error': str(e)}, status=500)
     else:
         return JsonResponse({'error': 'Invalid method'}, status=405)
+
