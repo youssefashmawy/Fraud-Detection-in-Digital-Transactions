@@ -14,7 +14,9 @@ model = tf.keras.models.load_model('../Notebooks/PCA_dataset/neural_network_mode
 # Load the scaler
 scaler = joblib.load('../Notebooks/PCA_dataset/scaler.pkl')
 
+# List of feature names expected in the request
 feature_names = ['Time'] + [f'V{i}' for i in range(1, 29)] + ['Amount']
+
 
 @csrf_exempt
 def checkTransaction(request):
@@ -23,11 +25,14 @@ def checkTransaction(request):
             # Parse the JSON request body
             data = json.loads(request.body)
 
+            # Extract and scale the features
             features = [data.get(name, 0) for name in feature_names]
             features = np.array(features).reshape(1, -1)
             scaled_features = scaler.transform(features)
+            
+            # Predict and determine if fraudulent
             prediction = model.predict(scaled_features)
-            is_fraudulent = prediction[0][0] > 0.5
+            is_fraudulent = bool(prediction[0][0] > 0.5)
 
             # Prepare data to store in Firebase
             data_to_store = {
@@ -41,10 +46,14 @@ def checkTransaction(request):
             
             # Return a success response with the new record's ID
             return JsonResponse({'id': new_ref.key, 'status': 'success'}, status=201)
+        
         except json.JSONDecodeError:
             return JsonResponse({'error': 'Invalid JSON'}, status=400)
+        
+        except Exception as e:
+            return JsonResponse({'error': str(e)}, status=500)
+    
     return JsonResponse({'error': 'Invalid method'}, status=405)
-
 
 def isFraud(request):
     if request.method == 'GET':
