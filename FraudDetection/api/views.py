@@ -55,25 +55,32 @@ def checkTransaction(request):
     
     return JsonResponse({'error': 'Invalid method'}, status=405)
 
+@csrf_exempt
 def isFraud(request):
     if request.method == 'GET':
-        # transaction_id = request.GET.get('transaction_id')
-        #
-        # if not transaction_id:
-        #     return JsonResponse({'error': 'Transaction ID not provided'}, status=400)
-        #
         try:
-        #     ref = connect_db()
-        #     transaction_ref = ref.reference(f'transactions/{transaction_id}')
-        #     transaction = transaction_ref.get()
-        #
-        #     if transaction.exists:
-        #         return JsonResponse({'id': {transaction_id}, 'exists': 'yes'}, status=200)
-        #     else:
-        #         return JsonResponse({'id': {transaction_id}, 'exists': 'no'}, status=200)
-            return JsonResponse({'id': '123', 'exists': 'no'}, status=200)
+            # Extract the transaction ID from the request
+            transaction_id = request.GET.get('id')
+            if not transaction_id:
+                return JsonResponse({'error': 'Transaction ID not provided'}, status=400)
+            
+            # Get the Firebase reference
+            ref = connect_db()
+            
+            # Retrieve the specific transaction by its ID
+            transaction_ref = ref.child('transactions').child(transaction_id)
+            transaction_data = transaction_ref.get()
+            
+            if transaction_data is None:
+                return JsonResponse({'error': 'Transaction not found'}, status=404)
+            
+            # Extract the fraud prediction value
+            is_fraudulent = transaction_data.get('prediction')
+            
+            # Return the fraud status in the response
+            return JsonResponse({'id': transaction_id, 'is_fraudulent': is_fraudulent}, status=200)
+        
         except Exception as e:
             return JsonResponse({'error': str(e)}, status=500)
-    else:
-        return JsonResponse({'error': 'Invalid method'}, status=405)
-
+    
+    return JsonResponse({'error': 'Invalid method'}, status=405)
