@@ -5,8 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d025f76-f8d9-42d0-80a1-9f630aeece65" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FraudDetection/api/static/css/font_sheet.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FraudDetection/api/static/fonts/venus_rising_rg.otf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FraudDetection/api/static/images/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FraudDetection/api/static/images/logo_no_text.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FraudDetection/api/static/src/input.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FraudDetection/api/templates/_base.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FraudDetection/api/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Fraud-Detection-in-Digital-Transactions.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Fraud-Detection-in-Digital-Transactions.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FraudDetection/api/database/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/FraudDetection/api/database/database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FraudDetection/FraudDetection/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/FraudDetection/FraudDetection/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FraudDetection/api/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/FraudDetection/api/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FraudDetection/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/FraudDetection/api/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -18,6 +28,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
+        <option value="package.json" />
       </list>
     </option>
   </component>
@@ -37,19 +48,28 @@
     &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/noure/OneDrive/Documents/GitHub/Fraud-Detection-in-Digital-Transactions&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;20.15.0&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;20.15.0&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/noure/OneDrive/Documents/GitHub/Fraud-Detection-in-Digital-Transactions/FraudDetection/api/static/fonts&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\noure\OneDrive\Documents\GitHub\Fraud-Detection-in-Digital-Transactions\FraudDetection\api\static\fonts" />
+      <recent name="C:\Users\noure\OneDrive\Documents\GitHub\Fraud-Detection-in-Digital-Transactions\FraudDetection\api\static\images" />
       <recent name="C:\Users\noure\OneDrive\Documents\GitHub\Fraud-Detection-in-Digital-Transactions" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\noure\OneDrive\Documents\GitHub\Fraud-Detection-in-Digital-Transactions\FraudDetection\api" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -65,6 +85,10 @@
       <workItem from="1724349390179" duration="1671000" />
       <workItem from="1724523454829" duration="7145000" />
       <workItem from="1724533086504" duration="2210000" />
+      <workItem from="1725088303541" duration="3137000" />
+      <workItem from="1725095073433" duration="2199000" />
+      <workItem from="1725097632149" duration="13149000" />
+      <workItem from="1725112641486" duration="4294000" />
     </task>
     <servers />
   </component>
