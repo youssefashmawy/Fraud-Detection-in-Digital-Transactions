@@ -54,5 +54,108 @@
           </div>
       </div>
     </section>
+    <br><br>
+    <div class="max-w-md mx-auto p-6 bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+        <form id="fraud-detection-form">
+            <!-- File Upload -->
+            <div class="flex items-center justify-center w-full mb-6">
+                <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-gray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                    <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                        <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+                        </svg>
+                        <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">TXT file with JSON data</p>
+                    </div>
+                    <input id="dropzone-file" type="file" class="hidden" accept=".json" required />
+                </label>
+            </div>
+    
+            <!-- Submit Button -->
+            <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+        </form>
+    </div>
+    
+    <!-- Add your JavaScript -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('fraud-detection-form');
+    const fileInput = document.getElementById('dropzone-file');
+    const submitButton = form.querySelector('button[type="submit"]');
+
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        submitButton.disabled = true;
+        submitButton.textContent = 'Submitting...';
+
+        const file = fileInput.files[0];
+        if (!file) {
+            alert('Please select a file');
+            submitButton.disabled = false;
+            submitButton.textContent = 'Submit';
+            return;
+        }
+
+        console.log('File name:', file.name);
+        console.log('File type:', file.type);
+        console.log('File size:', file.size, 'bytes');
+
+        try {
+            const jsonContent = await file.text();
+            console.log('File content:', jsonContent);
+
+            // Validate JSON
+            JSON.parse(jsonContent);
+
+            const formData = new FormData();
+            formData.append('file', file);
+
+            const url = '/api/check-transaction/';
+            console.log('Sending request to:', url);
+
+            const response = await fetch(url, {
+                method: 'POST',
+                body: formData
+            });
+
+            console.log('Response status:', response.status);
+
+            if (!response.ok) {
+                const errorText = await response.text();
+                console.error('Error response:', errorText);
+                throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
+            }
+
+            const result = await response.json();
+            console.log('Success:', result);
+            alert(`Transaction processed successfully. ID: ${result.id}`);
+            
+        } catch (error) {
+            console.error('Error:', error);
+            alert('An error occurred while processing the transaction: ' + error.message);
+        } finally {
+            submitButton.disabled = false;
+            submitButton.textContent = 'Submit';
+        }
+    });
+
+    fileInput.addEventListener('change', function(e) {
+        const fileName = e.target.files[0]?.name;
+        if (fileName) {
+            const fileNameElement = document.querySelector('.text-sm.text-gray-500');
+            if (fileNameElement) {
+                fileNameElement.textContent = `Selected file: ${fileName}`;
+            }
+        }
+    });
+});
+
+    </script>
+    
+    
+    <br><br>
+
+
 
 {% endblock content %}
