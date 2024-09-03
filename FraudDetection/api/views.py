@@ -9,7 +9,7 @@ import joblib
 import numpy as np
 
 # Load the model
-model = tf.keras.models.load_model('../Notebooks/PCA_dataset/neural_network_model_pca_80.keras')
+model = tf.keras.models.load_model('../Notebooks/PCA_dataset/neural_network_model_pca_final.keras')
 
 # Load the scaler
 scaler = joblib.load('../Notebooks/PCA_dataset/scaler.pkl')
@@ -47,7 +47,7 @@ def checkTransaction(request):
             
             # Predict and determine if fraudulent
             prediction = model.predict(scaled_features)
-            is_fraudulent = bool(prediction[0][0] > 0.5)
+            is_fraudulent = bool(prediction[0][0] > 0.55)
             
             # Prepare data to store in Firebase
             data_to_store = {

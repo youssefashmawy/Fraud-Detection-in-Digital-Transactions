@@ -5,19 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d025f76-f8d9-42d0-80a1-9f630aeece65" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FraudDetection/api/static/css/font_sheet.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FraudDetection/api/static/fonts/venus_rising_rg.otf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FraudDetection/api/static/images/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FraudDetection/api/static/images/logo_no_text.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FraudDetection/api/static/src/input.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FraudDetection/api/templates/_base.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FraudDetection/api/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Fraud-Detection-in-Digital-Transactions.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Fraud-Detection-in-Digital-Transactions.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FraudDetection/FraudDetection/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/FraudDetection/FraudDetection/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FraudDetection/api/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/FraudDetection/api/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FraudDetection/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/FraudDetection/api/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +76,8 @@
       <workItem from="1725088303541" duration="3137000" />
       <workItem from="1725095073433" duration="2199000" />
       <workItem from="1725097632149" duration="13149000" />
-      <workItem from="1725112641486" duration="4294000" />
+      <workItem from="1725112641486" duration="5116000" />
+      <workItem from="1725216823694" duration="686000" />
     </task>
     <servers />
   </component>
