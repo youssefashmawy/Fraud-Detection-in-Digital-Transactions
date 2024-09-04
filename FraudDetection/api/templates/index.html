@@ -21,7 +21,7 @@
             <div class="mr-auto place-self-center lg:col-span-7">
                 <h1 class="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">Your AI-Powered Defense Against Fraud</h1>
                 <p class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">Leverage the power of advanced neural networks and AI models to always stay one step ahead. Our cutting-edge technology gives you peace of mind and helps you grow your business securely.</p>
-                <a href="#" class="inline-flex items-center justify-center px-5 py-3 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
+                <a href="#demo-section" class="inline-flex items-center justify-center px-5 py-3 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
                     Request a Demo
                 </a>
             </div>
@@ -67,7 +67,7 @@
 
 
     <!-- Demo Section -->
-    <section class="bg-white dark:bg-gray-900">
+    <section id="demo-section" class="bg-white dark:bg-gray-900">
         <div class="grid max-w-screen-xl px-4 py-2 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
             <div class="mr-auto place-self-center lg:col-span-7">
                 <h1 class="max-w-2xl mb-4 text-2xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">Demo</h1>
@@ -105,6 +105,18 @@
         </div>
         <br><br>
 
+        <!-- HTML Form for Checking Fraud Status -->
+        <form id="fraud-check-form" action="{% url 'is_fraud' %}" method="get">
+            <!-- Transaction ID -->
+            <div class="mb-6">
+                <label for="transaction-id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Transaction ID</label>
+                <input type="text" name="id" id="transaction-id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter transaction ID" required>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="text-white bg-blue-500 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Check Fraud Status</button>
+        </form>
+
     </section>
 
     <!-- Message Box with Overlay -->
@@ -115,7 +127,6 @@
         </div>
     </div>
 
-
     <!-- Add your JavaScript -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -124,6 +135,8 @@
             const submitButton = form.querySelector('button[type="submit"]');
             const overlay = document.getElementById('overlay');
             const closeMessageBoxButton = document.getElementById('close-message-box');
+            const fraudCheckForm = document.getElementById('fraud-check-form')
+            const fraudCheckSubmitButton = fraudCheckForm.querySelector('button[type="submit"]')
         
             form.addEventListener('submit', async function(e) {
                 e.preventDefault();
@@ -184,6 +197,55 @@
                     submitButton.textContent = 'Submit';
                 }
             });
+
+
+            fraudCheckForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+        
+                // Show the message box and overlay
+                showMessageBox('Form submitted! Processing your request...');
+        
+                fraudCheckSubmitButton.disabled = true;
+                fraudCheckSubmitButton.textContent = 'Submitting...';
+        
+                try {
+                    const transactionId = document.getElementById('transaction-id').value;
+
+                    // You can now use this value for further processing
+                    console.log('Transaction ID:', transactionId);
+
+                    const url = `{% url 'is_fraud' %}?id=${encodeURIComponent(transactionId)}`;
+                    console.log('Sending request to:', url);
+        
+        
+                    const response = await fetch(url, {
+                        method: 'GET',
+                    });
+        
+                    console.log('Response status:', response.status);
+        
+                    if (!response.ok) {
+                        const errorText = await response.text();
+                        console.error('Error response:', errorText);
+                        throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
+                    }
+        
+                    const result = await response.json();
+                    console.log('Success:', result);
+                    let text = 'not ';
+                    if (result.is_fraudulent) {
+                        text = '';
+                    }
+                    showMessageBox(`Transaction with ID: ${result.id} is ` + text + 'fraud.');
+                    
+                } catch (error) {
+                    console.error('Error:', error);
+                    showMessageBox('An error occurred while processing the transaction: ' + error.message);
+                } finally {
+                    fraudCheckSubmitButton.disabled = false;
+                    fraudCheckSubmitButton.textContent = 'Check Fraud Status';
+                }
+            });
         
             // Event listener for closing the message box
             closeMessageBoxButton.addEventListener('click', function() {
@@ -200,6 +262,7 @@
                 }
             });
         
+            // Function to show the message box
             function showMessageBox(message) {
                 document.getElementById('message-text').textContent = message;
                 overlay.classList.add('active');
