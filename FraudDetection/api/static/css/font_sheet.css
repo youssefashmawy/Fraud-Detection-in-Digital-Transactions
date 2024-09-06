@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'venus_rising_rg';
+    src: url('../fonts/venus_rising_rg.otf') format('otf');
+}
+
+body {
+    font-family: 'venus_rising_rg', sans-serif;
+}
