@@ -9,10 +9,10 @@ import joblib
 import numpy as np
 
 # Load the model
-model = tf.keras.models.load_model('../Notebooks/PCA_dataset/neural_network_model_pca_final.keras')
-
+model = tf.keras.models.load_model('../Model/neural_network_model_pca_final.keras')
+# Model\credit card fraud detection pca final.ipynb
 # Load the scaler
-scaler = joblib.load('../Notebooks/PCA_dataset/scaler.pkl')
+scaler = joblib.load('../Model/scaler.pkl')
 
 # List of feature names expected in the request
 feature_names = ['Time'] + [f'V{i}' for i in range(1, 29)] + ['Amount']
