@@ -131,7 +131,6 @@ The Django API serves the trained model to predict whether a transaction is frau
          "V27":0.4236203294,
          "V28":-0.1051685335,
          "Amount":153.46
-
      }
    }
    ```
